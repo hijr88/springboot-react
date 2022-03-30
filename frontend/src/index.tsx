@@ -1,5 +1,5 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
+import ReactDom from 'react-dom';
 import { RecoilRoot } from 'recoil';
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import App from './App';
@@ -64,7 +64,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   //--------새로운값
-  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
   * {
     box-sizing: border-box;
   }
@@ -86,9 +85,7 @@ const GlobalStyle = createGlobalStyle`
 
 const client = new QueryClient();
 
-const container = document.getElementById('root');
-const root = createRoot(container!);
-root.render(
+ReactDom.render(
   <React.StrictMode>
     <RecoilRoot>
       <QueryClientProvider client={client}>
@@ -99,4 +96,4 @@ root.render(
       </QueryClientProvider>
     </RecoilRoot>
   </React.StrictMode>
-);
+,document.getElementById('root'));
